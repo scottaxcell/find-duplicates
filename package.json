@@ -1,0 +1,22 @@
+{
+	"name": "find-duplicates",
+	"version": "1.0.0",
+	"description": "Simple Node.js application to find duplicate files.",
+	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/scottaxcell/find-duplicates.git"
+	},
+	"author": "Scott Axcell",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/scottaxcell/find-duplicates/issues"
+	},
+	"homepage": "https://github.com/scottaxcell/find-duplicates#readme",
+	"dependencies": {
+		"argparse": "^2.0.1",
+		"dateformat": "^4.0.0",
+		"find": "^0.3.0",
+		"md5-file": "^5.0.0"
+	}
+}
