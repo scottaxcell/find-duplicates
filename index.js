@@ -74,6 +74,6 @@ for (const [hash, files] of Object.entries(hashMap)) {
 
 logInfo(
 	numDuplicates > 0
-		? `found ${numDuplicates} instances duplicates`
+		? `found ${numDuplicates} instances of duplicates`
 		: "no duplicates found"
 );
