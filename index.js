@@ -36,27 +36,36 @@ try {
 		process.exit(1);
 	}
 } catch (e) {
-	console.error(`An error occurred. ${e}`);
+	logError(`error occurred when checking existance of ${directory}. ${e}`);
 	process.exit(1);
 }
 
 logInfo(`searching ${directory} for files ...`);
 
-const files = find.fileSync(directory);
-if (!files || files.length <= 0) {
-	logInfo(`no files found`);
-	process.exit(0);
+let files = [];
+try {
+	files = find.fileSync(directory);
+	if (!files || files.length <= 0) {
+		logInfo(`no files found in ${directory}`);
+		process.exit(0);
+	}
+} catch (e) {
+	logError(`error occurred during find in ${directory}. ${e}`);
 }
 
 logInfo(`processing ${files.length} files for duplicates ...`);
 
 const hashMap = {};
 files.forEach((file) => {
-	const hash = md5File.sync(file);
-	if (hashMap[hash]) {
-		hashMap[hash].push(file);
-	} else {
-		hashMap[hash] = [file];
+	try {
+		const hash = md5File.sync(file);
+		if (hashMap[hash]) {
+			hashMap[hash].push(file);
+		} else {
+			hashMap[hash] = [file];
+		}
+	} catch (e) {
+		logError(`error occurred during processing of ${file}. ${e}`);
 	}
 });
 
